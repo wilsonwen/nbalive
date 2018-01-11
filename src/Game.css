@@ -1,0 +1,30 @@
+.game-row {
+	padding: 10px;
+	border-bottom: 3px solid #e8e8e8;
+}
+
+.game-title {
+	text-align: left;
+	font-size: 20px;
+	padding-bottom: 10px;
+}
+
+.game-title-text {
+	padding-right: 5px;
+}
+
+.game-files {
+	text-align: left;
+}
+
+.game-files ul {
+	padding: 0;
+}
+
+.game-files ul li {
+	list-style-type: none;
+}
+
+.game-files-name {
+	padding-right: 5px;
+}
