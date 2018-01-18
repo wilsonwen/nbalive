@@ -36,7 +36,7 @@ app.get('/date', function(request, response){
 })
 
 app.get('/nbastreams', function(request, response){
-  testStream = '../cronjob/data/streams.json'
+  testStream = 'data/streams.json'
   fs.readFile(testStream, function(err, data){
   	response.send(JSON.parse(data))
   })

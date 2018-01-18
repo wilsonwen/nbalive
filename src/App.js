@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Config from './config'
-import Game from './Game'
-import Spin from './Spin'
 import './App.css';
+import 'antd/dist/antd.css'
 
-import FontAwesome from 'react-fontawesome';
 
 class App extends Component {
 
@@ -15,8 +13,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-       {this.props.children}
+      <div>
+        {this.props.children}
       </div>
 
     );

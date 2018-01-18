@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Config from './config'
 import Game from './Game'
 import Spin from './Spin'
-import FontAwesome from 'react-fontawesome';
+import { Row, Col, Layout, List } from 'antd';
+import { Menu } from 'antd';
+const { Header, Content, Footer, Sider } = Layout;
 
 const fs = require('fs');
 
@@ -89,28 +91,32 @@ class GameList extends Component {
       content = game_list
     }
 
-
-
-    let today = new Date()
-    let year = today.getFullYear()
-    let month = today.getMonth() + 1
-    let date = today.getDate()
     
     return (
-      <div className="App">
-        <div className="App-header"> 
-          <h1 className="App-title"> 
-           NBA 直播
-          </h1>
-        </div>
+      <Layout>
+        <Header style={{ position: 'fixed', width: '100%', zIndex: 10 }}>
+          <div className="logo" />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            style={{ lineHeight: '64px' }}
+          >
+            <Menu.Item key="1">nav 1</Menu.Item>
 
-        <div> 
-          <p> {year}-{month}-{date} </p>
-          <div className="col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10">
+          </Menu>
+        </Header>
+        <Content style={{ padding: '0px', marginTop: '64px' }}>
+          <div className="" style={{ background: '#fff', padding: 10, minHeight: 380, textAlign: 'center' }}>
+        
+              <h1>今日比赛</h1>
+            <List> 
               { content }
+            </List>
+
+            
           </div>
-        </div>
-      </div>
+        </Content>
+      </Layout>
 
     );
   }
