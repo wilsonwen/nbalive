@@ -65,6 +65,9 @@ class LiveVideo extends Component {
         let topic = comments.data.children[i]
         let body = topic.data.body
         let matchAll = body.match(/\([^()]+\)/g)
+
+        if (matchAll == null)
+          continue;
         
         for(var j = 0; j < matchAll.length; j++) {
           let s = matchAll[j].substring(1, matchAll[j].length-1)
