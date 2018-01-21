@@ -1,4 +1,5 @@
 var express = require('express');
+var compression = require('compression');
 var path = require('path');
 var request = require('request');
 var nba = require('nba-stats-client')
@@ -6,6 +7,7 @@ var cors = require('cors')
 var fs = require('fs')
 var app = express();
 app.use(cors());
+app.use(compression());
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/build'));
