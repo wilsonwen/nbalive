@@ -24,7 +24,7 @@ class Game extends Component {
 	  let visitorLogo = getTeamLogo(visitor.nickname)
 	  let status = this.props.game.period_time.period_status
 
-	  
+
 	  let content
 	  let game = <Row style={{ width: '100%', textAlign: 'center'}}>
 	  				<Col xs={{span:6}} sm={{span: 4, offset: 4}}>
@@ -70,7 +70,7 @@ class Game extends Component {
 	  } else {
 		let params = url.substring(start)
 		let link = '/live/' + encodeURIComponent(params);
-		content = <Link className="gameitem" to={link} target="_blank">
+		content = <Link className="gameitem" to={link}>
 	  				{game}	
 				  </Link>
 	  }
