@@ -32,11 +32,12 @@ class Game extends Component {
 	  let visitor = this.props.game.visitor
 	  let homeLogo = getTeamLogo(home.nickname)
 	  let visitorLogo = getTeamLogo(visitor.nickname)
+	  let status = this.props.game.period_time.period_status
 
 
 	  return (
 	  	<List.Item>
-	  		<Link className="gameitem" to={link}>
+	  		<Link className="gameitem" to={link} target="_blank">
 	  			<Row style={{ width: '100%', textAlign: 'center'}}>
 	  				<Col xs={{span:6}} sm={{span: 4, offset: 4}}>
 	  					<div>
@@ -47,15 +48,22 @@ class Game extends Component {
 			  			</div>
 			  		</Col>
 			  		<Col xs={{span:4}} sm={{span: 3}}>
+			  			<div className="score"> 
 			  			{home.score} 
+			  			</div>
 			  		</Col>
 			  		<Col xs={{span:4}} sm={{span: 2}}>
+			  			<div className="status">
+			  				{status}
+			  			</div>
 			  			<div className="time"> 
 			  				{hour}:{minute} 
 			  			</div>
 			  		</Col>
 			  		<Col xs={{span:4}} sm={{span: 3}}>
-			  			{visitor.score}
+			  			<div className="score"> 
+			  				{visitor.score}
+			  			</div> 
 			  		</Col>
 			  		<Col xs={{span:6}} sm={{span: 4}}>
 			  			<div>

@@ -39,7 +39,12 @@ class LiveVideo extends Component {
     var priorityMap = {
       'goodnba.stream': 0,
       'rawstreams.xyz': 1,
-      'www.genti.stream': 2
+      'buffstream': 2,
+      'acesports.stream': 3,
+      'watchkobestreams.ml': 5,
+      '247nba.net': 6,
+      'www.nbastreams.me': 1000,
+      'mycloudsports.ml': 1000
     }
     let keys = Object.keys(priorityMap)
     for(var i = 0; i < keys.length; i++) {
@@ -71,6 +76,9 @@ class LiveVideo extends Component {
         
         for(var j = 0; j < matchAll.length; j++) {
           let s = matchAll[j].substring(1, matchAll[j].length-1)
+          if (s.endsWith('m3u8')) {
+            continue;
+          }
           if (s.startsWith('http')) {
             var stream = {}
             stream['priority'] = this.priority(s)
@@ -79,6 +87,9 @@ class LiveVideo extends Component {
           }
         }
       }
+      streams.sort(function(a,b){return a['priority'] - b['priority']})
+
+      console.log('streams', streams)
 
       this.setState({
         title: title,
@@ -115,22 +126,21 @@ class LiveVideo extends Component {
           collapsedWidth="0"
           onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
           >
-          <div className="logo" />
+          <div className="empty" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']} onSelect={this.onChange}>
             {content}
           </Menu>
+          <div>
+            <img src="http://wx4.sinaimg.cn/mw690/6da6f8f9ly1ficpts9a74j20iy0j4gnw.jpg" width="150px"/>
+          </div>
         </Sider>
 
          <Layout>
-          <Content style={{ margin: '24px 16px 0' }}>
-            <div style={{ padding: 0, background: '#fff', height: '100%' }}>
-              <iframe src={this.state.url} className="iframe" 
-                allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"/>
+          <Content style={{ margin: '80px 16px 0' }}>
+            <div className="iframe-container ">
+              <iframe src={this.state.url} allowfullscreen/>
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2016 Created by Ant UED
-          </Footer>
         </Layout>
       </Layout>
 

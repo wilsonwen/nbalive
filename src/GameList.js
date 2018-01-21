@@ -94,17 +94,6 @@ class GameList extends Component {
     
     return (
       <Layout>
-        <Header style={{ position: 'fixed', width: '100%', zIndex: 10 }}>
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            style={{ lineHeight: '64px' }}
-          >
-            <Menu.Item key="1">nav 1</Menu.Item>
-
-          </Menu>
-        </Header>
         <Content style={{ padding: '0px', marginTop: '64px' }}>
           <div className="" style={{ background: '#fff', padding: 10, minHeight: 380, textAlign: 'center' }}>
         
