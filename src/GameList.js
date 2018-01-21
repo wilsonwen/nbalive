@@ -48,11 +48,11 @@ class GameList extends Component {
 
     // Get lives streams of games
     var livesUrl
-    //if (process.env.NODE_ENV == 'development') {
-    //  livesUrl = this.config.server + "/nbastreams"
-    //} else {
+    if (process.env.NODE_ENV == 'development') {
+      livesUrl = this.config.server + "/nbastreams"
+    } else {
       livesUrl = "https://www.reddit.com/r/nbastreams.json"
-    //}
+    }
     fetch(livesUrl).then(res => res.json()).then((data) => {
       console.log(data)
       let lives = this.parseLive(data)
@@ -97,7 +97,7 @@ class GameList extends Component {
         <Content style={{ padding: '0px', marginTop: '64px' }}>
           <div className="" style={{ background: '#fff', padding: 10, minHeight: 380, textAlign: 'center' }}>
         
-              <h1>今日比赛</h1>
+              <h3>今日比赛</h3>
             <List> 
               { content }
             </List>

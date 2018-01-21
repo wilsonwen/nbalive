@@ -6,6 +6,11 @@
   float: left;
 }
 
+.donate {
+  padding: 10px 10px 10px 20px;
+  color:#fff;
+}
+
 .iframe-container {
     height: 100%;
 }

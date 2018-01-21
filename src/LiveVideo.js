@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { browserHistory, Link } from 'react-router';
+import {isMobile} from 'react-device-detect';
+
 import Config from './config'
 import Game from './Game'
-import Spin from './Spin'
 import './LiveVideo.css'
 
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Spin, notification } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -19,7 +20,7 @@ class LiveVideo extends Component {
     this.state = {
       title: "",
       streams: [],
-      url: ""
+      url: "",
     }
 
     this.onChange = this.onChange.bind(this)
@@ -48,6 +49,11 @@ class LiveVideo extends Component {
       'www.nbastreams.me': 1000,
       'mycloudsports.ml': 1000
     }
+
+    // rawstreams.xyz not fit into mobile
+    if (isMobile && s.startsWith('http://rawstreams.xyz')) 
+      return 1000
+
     let keys = Object.keys(priorityMap)
     for(var i = 0; i < keys.length; i++) {
       if (s.startsWith('http://' + keys[i])) {
@@ -59,6 +65,13 @@ class LiveVideo extends Component {
 
 
   componentDidMount() {
+
+    notification.open({
+      message: '正在进入NBA比赛直播，请耐心等候',
+      description: '直播视频源如果发生不稳定，请从左侧栏选择其他线路进行尝试，切换到其他稳定的视频源观看。',
+      placement: 'bottomRight',
+    });
+
     let url = 'https://www.reddit.com/r/nbastreams/comments/' + decodeURIComponent(this.props.params.url)
     let streamUrl = url.substring(0, url.length-1) + ".json"
     fetch(streamUrl).then(res => res.json()).then((data) => {
@@ -103,7 +116,7 @@ class LiveVideo extends Component {
 
   render() {
     var content = <Spin />
-    if (this.state.streams.length >= 0) {
+    if (this.state.streams.length > 0) {
 
       let stream_list = []
       let maxlen = this.state.streams.length;
@@ -120,6 +133,7 @@ class LiveVideo extends Component {
       }
       content = stream_list
     }
+
   
     return (
       <Layout>
@@ -132,7 +146,8 @@ class LiveVideo extends Component {
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']} onSelect={this.onChange}>
             {content}
           </Menu>
-          <div>
+          <div className="donate">
+            <p>   扫码赞助我一瓶佳得乐吧!! </p>
             <img src="http://wx4.sinaimg.cn/mw690/6da6f8f9ly1ficpts9a74j20iy0j4gnw.jpg" width="150px"/>
           </div>
         </Sider>
@@ -140,7 +155,9 @@ class LiveVideo extends Component {
          <Layout>
           <Content style={{ margin: '80px 16px 0' }}>
             <div className="iframe-container ">
-              <iframe src={this.state.url} allowFullScreen/>
+
+              <iframe src={this.state.url} allowFullScreen />
+
             </div>
           </Content>
         </Layout>

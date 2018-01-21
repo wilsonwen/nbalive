@@ -23,7 +23,7 @@ class App extends Component {
          <Header style={{ position: 'fixed', width: '100%', zIndex: 10 }}>
           <div className="logo">
             <Link to='/'>
-              LOGO
+              <img src="/logo.png" style={{ height: '32px' }} />
             </Link>
           </div>
           <Menu
