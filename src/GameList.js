@@ -48,11 +48,11 @@ class GameList extends Component {
 
     // Get lives streams of games
     var livesUrl
-    if (process.env.NODE_ENV == 'development') {
-      livesUrl = this.config.server + "/nbastreams"
-    } else {
+    //if (process.env.NODE_ENV == 'development') {
+    //  livesUrl = this.config.server + "/nbastreams"
+    //} else {
       livesUrl = "https://www.reddit.com/r/nbastreams.json"
-    }
+    //}
     fetch(livesUrl).then(res => res.json()).then((data) => {
       console.log(data)
       let lives = this.parseLive(data)

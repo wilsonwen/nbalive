@@ -41,8 +41,10 @@ class LiveVideo extends Component {
       'rawstreams.xyz': 1,
       'buffstream': 2,
       'acesports.stream': 3,
-      'watchkobestreams.ml': 5,
-      '247nba.net': 6,
+      'www.besasport.top': 4,
+      'www.genti.stream': 5,
+      'watchkobestreams.ml': 6,
+      '247nba.net': 7,
       'www.nbastreams.me': 1000,
       'mycloudsports.ml': 1000
     }
@@ -138,7 +140,7 @@ class LiveVideo extends Component {
          <Layout>
           <Content style={{ margin: '80px 16px 0' }}>
             <div className="iframe-container ">
-              <iframe src={this.state.url} allowfullscreen/>
+              <iframe src={this.state.url} allowFullScreen/>
             </div>
           </Content>
         </Layout>

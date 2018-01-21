@@ -15,16 +15,6 @@ class Game extends Component {
 	}
 
 	render() {
-	  let start = 'https://www.reddit.com/r/nbastreams/comments/'.length
-	  let url = this.props.game.url
-	  var link
-	  if (url == undefined) {
-	  	link = "#"
-	  } else {
-		let params = url.substring(start)
-		link = '/live/' + encodeURIComponent(params);
-	  }
-	  
 	  let time = ((parseInt(this.props.game.time) + 1300) % 2400).toString()
 	  let hour = time.length == 4 ? time.substring(0, 2) : '0' + time.substring(0, 1)
 	  let minute = time.length == 4 ? time.substring(2, 4) : time.substring(1, 3)
@@ -34,11 +24,9 @@ class Game extends Component {
 	  let visitorLogo = getTeamLogo(visitor.nickname)
 	  let status = this.props.game.period_time.period_status
 
-
-	  return (
-	  	<List.Item>
-	  		<Link className="gameitem" to={link} target="_blank">
-	  			<Row style={{ width: '100%', textAlign: 'center'}}>
+	  
+	  let content
+	  let game = <Row style={{ width: '100%', textAlign: 'center'}}>
 	  				<Col xs={{span:6}} sm={{span: 4, offset: 4}}>
 	  					<div>
 	  						<img className="teamlogo" src={homeLogo} type="image/svg+xml"/>
@@ -74,7 +62,24 @@ class Game extends Component {
 			  			</div>
 			  		</Col>
 				</Row>
-			</Link>
+
+	  let start = 'https://www.reddit.com/r/nbastreams/comments/'.length
+	  let url = this.props.game.url
+	  if (url == undefined) {
+	  	content = game
+	  } else {
+		let params = url.substring(start)
+		let link = '/live/' + encodeURIComponent(params);
+		content = <Link className="gameitem" to={link} target="_blank">
+	  				{game}	
+				  </Link>
+	  }
+
+
+	  return (
+	  	<List.Item>
+	  		
+			{content}
 		</List.Item>
 
 	  )
