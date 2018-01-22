@@ -19,7 +19,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="content">
          <Header style={{ position: 'fixed', width: '100%', zIndex: 10 }}>
           <div className="logo">
             <Link to='/'>
@@ -38,8 +38,11 @@ class App extends Component {
             </Menu.Item>
           </Menu>
         </Header>
-        {this.props.children}
-        <Footer>
+        <div className="content">
+          {this.props.children}
+        </div>
+        <Footer style={{ textAlign: 'center' }}>
+           YVPlay ©2018 Created by 温
         </Footer>
       </div>
 
