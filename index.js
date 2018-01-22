@@ -16,7 +16,7 @@ app.use(express.static(__dirname + '/build'));
 function getDateTimeNBA() {
   var d = new Date()
   var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-  var mst = new Date(d.getTime() + (3600000*(-24)));
+  var mst = new Date(d.getTime() + (3600000*(-16)));
   console.log(mst)
   return mst
 }

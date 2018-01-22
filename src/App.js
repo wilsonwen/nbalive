@@ -39,6 +39,8 @@ class App extends Component {
           </Menu>
         </Header>
         {this.props.children}
+        <Footer>
+        </Footer>
       </div>
 
     );

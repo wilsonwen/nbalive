@@ -53,6 +53,9 @@ class LiveVideo extends Component {
     // rawstreams.xyz not fit into mobile
     if (isMobile && s.startsWith('http://rawstreams.xyz')) 
       return 1000
+    // goodnba.stream not fit into mobile
+    if (isMobile && s.startsWith('http://goodnba.stream')) 
+      return 1000
 
     let keys = Object.keys(priorityMap)
     for(var i = 0; i < keys.length; i++) {
