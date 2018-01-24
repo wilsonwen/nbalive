@@ -76,7 +76,7 @@ class GameList extends Component {
       for(var i = 0; i < games.length; i++) {
         for(var j = 0; j < this.state.lives.length; j++) {
           let live = this.state.lives[j]
-          let keyword = games[i].home.city
+          let keyword = games[i].home.nickname
           if (live.title.indexOf(keyword) >= 0) {
             games[i].url = live.url
           }
